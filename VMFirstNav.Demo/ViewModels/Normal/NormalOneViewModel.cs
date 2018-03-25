@@ -67,19 +67,19 @@ namespace VMFirstNav.Demo
 			}
 		}
 
-
+        ICommand _loginNav;
         public ICommand NavigatePopup
         {
             get
             {
-                if (_navToChild == null)
+                if (_loginNav == null)
                 {
-                    _navToChild = new Command(async () =>
+                    _loginNav = new Command(async () =>
                     {
                         await _navService.PushModalAsync<NormalModalViewModel>();
                     });
                 }
-                return _navToChild;
+                return _loginNav;
             }
         }
 	}
