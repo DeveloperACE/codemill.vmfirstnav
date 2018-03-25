@@ -17,6 +17,12 @@ namespace VMFirstNav.Demo
             _navService = NavigationService.Instance;
 
 			Description = "Normal navigation stack only";
+
+            //what i want to do is check for the login page here and display it as modal if the user isnt currently logged in.
+
+            /*if (/*user is not already logged in*) {
+               //display the login page as a modal to get the users credentials and log them in
+            }*/
 		}
 
 		string title;
