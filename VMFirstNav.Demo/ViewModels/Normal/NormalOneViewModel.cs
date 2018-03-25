@@ -60,5 +60,21 @@ namespace VMFirstNav.Demo
 				return _navToChild;
 			}
 		}
+
+
+        public ICommand NavigatePopup
+        {
+            get
+            {
+                if (_navToChild == null)
+                {
+                    _navToChild = new Command(async () =>
+                    {
+                        await _navService.PushModalAsync<NormalModalViewModel>();
+                    });
+                }
+                return _navToChild;
+            }
+        }
 	}
 }

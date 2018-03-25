@@ -6,6 +6,7 @@
 	<ContentPage.Content>
         <StackLayout VerticalOptions="Center">
             <Label XAlign="Center" Text="{Binding Description}"></Label>
+            <Button Text="Show Modal" Command="{Binding NavigatePopup}"/>
             <Button Text="Navigate" Command="{Binding NavigateToChild}"/>
         </StackLayout>  
 	</ContentPage.Content>
