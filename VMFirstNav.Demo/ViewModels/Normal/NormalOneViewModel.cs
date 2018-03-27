@@ -3,6 +3,7 @@ using CodeMill.VMFirstNav;
 using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace VMFirstNav.Demo
 {
@@ -23,9 +24,23 @@ namespace VMFirstNav.Demo
             /*if (/*user is not already logged in*) {
                //display the login page as a modal to get the users credentials and log them in
             }*/
+
+            //NavigatePopup.Execute();
+            //NavigatePopup.Execute(null);
+            // await Navigation.PushModalAsync(new LoginPage());
+            //Navigation.PushModalAsync(new NormalModalViewModel());
+            // _navService.PushModalAsync(new NormalModalViewModel());
+            // NavigatePopup.Execute(null);
+            //NavigateModalLogin();
+
 		}
 
-		string title;
+		internal async Task OnAppearing()
+        {
+            await NavigateModalLogin();
+        }
+
+        string title;
 		public string Title
 		{
 			get => title;
@@ -74,13 +89,18 @@ namespace VMFirstNav.Demo
             {
                 if (_loginNav == null)
                 {
-                    _loginNav = new Command(async () =>
-                    {
-                        await _navService.PushModalAsync<NormalModalViewModel>();
-                    });
+                    _loginNav = new Command(async () => await NavigateModalLogin());
                 }
                 return _loginNav;
             }
         }
+
+        async Task NavigateModalLogin()
+        {
+            await _navService.PushModalAsync<NormalModalViewModel>();
+        }
+
+
+
 	}
 }

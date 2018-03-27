@@ -23,5 +23,12 @@ namespace VMFirstNav.Demo
                 BindingContext = vm;
             }
         }
+
+        protected async override void OnAppearing()
+        {
+            await vm.OnAppearing();
+            base.OnAppearing();
+            System.Diagnostics.Debug.WriteLine("*****Here*****");
+        }
     }
 }
